@@ -1,6 +1,6 @@
 $code = @'
 
-$url = "https://raw.githubusercontent.com/Radmex/main/refs/heads/main/host.txt"
+$url = "https://raw.githubusercontent.com/Radmex/main/main/host.txt"
 
 
 try {
